@@ -42,6 +42,9 @@ def go(args):
 
     # 3. Save the cleaned DataFrame
     # Using index=False is a requirement to pass Udacity's automated checks
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     logger.info("Saving cleaned data to clean_sample.csv")
     df.to_csv("clean_sample.csv", index=False)
 
